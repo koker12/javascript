@@ -1,0 +1,35 @@
+/* Стили для светлой темы */
+.theme-light {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --text-color: #212529;
+}
+
+/* Стили для темной темы */
+.theme-dark {
+    --primary-color: #6c757d;
+    --secondary-color: #007bff;
+    --background-color: #343a40;
+    --text-color: #f8f9fa;
+}
+
+/* Стили для кнопки "Сменить тему" */
+button{
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Стили для кнопки "Сменить тему" при наведении */
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Стили для кнопки "Сменить тему" при активации */
+button:active {
+    transform: translateY(1px);
+}

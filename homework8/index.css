@@ -1,0 +1,20 @@
+.error {
+    border: 1px solid red !important;
+}
+
+.success, .price-container:focus {
+    border: 1px solid green;
+}
+
+.price-container {
+    display: flex;
+    align-items: center;
+}
+
+.price-value {
+    margin-right: 10px;
+}
+
+.delete-btn {
+    cursor: pointer;
+}

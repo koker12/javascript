@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Banners</title>
+    <style>
+        .image-to-show {
+            width: 400px;
+            height: 400px;
+        }
+
+        .images-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .button-wrapper {
+            margin-top: 10px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="images-wrapper">
+    <img src="./img/1.jpg" alt="image of game" class="image-to-show"/>
+    <img src="./img/2.jpg" alt="image of game" class="image-to-show"/>
+    <img src="./img/3.JPG" alt="image of game" class="image-to-show"/>
+    <img src="./img/4.png" alt="image of game" class="image-to-show"/>
+</div>
+
+<div class="button-wrapper">
+    <button class="button stop-button">Прекратить</button>
+    <button class="button resume-button">Возобновить показ</button>
+</div>
+
+<script>
+    const images = document.querySelectorAll('.image-to-show');
+    const stopButton = document.querySelector('.stop-button');
+    const resumeButton = document.querySelector('.resume-button');
+    let currentIndex = 0;
+    let intervalId;
+
+    // Функция для отображения текущей картинки и скрытия предыдущей
+    function showCurrentImage() {
+        const previousIndex = (currentIndex + images.length - 1) % images.length;
+        images[previousIndex].style.display = 'none';
+        images[currentIndex].style.display = 'block';
+    }
+
+    // Функция для переключения на следующую картинку
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showCurrentImage();
+    }
+
+    // Функция для запуска цикла показа картинок
+    function startImageRotator() {
+        intervalId = setInterval(nextImage, 10000);
+    }
+
+    // Функция для остановки цикла показа картинок
+    function stopImageRotator() {
+        clearInterval(intervalId);
+    }
+
+    // Обработчик нажатия на кнопку "Прекратить"
+    stopButton.addEventListener('click', () => {
+        stopImageRotator();
+    });
+
+    // Обработчик нажатия на кнопку "Возобновить показ"
+    resumeButton.addEventListener('click', () => {
+        showCurrentImage();
+        startImageRotator();
+    });
+
+    // Запуск цикла показа картинок при загрузке страницы
+    startImageRotator();
+</script>
+</body>
+</html>
